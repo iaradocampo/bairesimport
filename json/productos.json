@@ -1,0 +1,37 @@
+[{
+        "id": 1,
+        "nombre": "Smart tv",
+        "importe": 250,
+        "url": "https://http2.mlstatic.com/D_NQ_NP_711131-MLA46112698238_052021-O.webp"
+    },
+    {
+        "id": 2,
+        "nombre": "Chromecast",
+        "importe": 30,
+        "url": "https://http2.mlstatic.com/D_NQ_NP_620605-MLA32691559317_102019-O.webp"
+    },
+    {
+        "id": 3,
+        "nombre": "Monitor 24",
+        "importe": 120,
+        "url": "https://http2.mlstatic.com/D_NQ_NP_600196-MLA44913483868_022021-O.webp"
+    },
+    {
+        "id": 4,
+        "nombre": "Auriculares true wireless",
+        "importe": 30,
+        "url": "https://http2.mlstatic.com/D_NQ_NP_970435-MLA46586111566_072021-O.webp"
+    },
+    {
+        "id": 5,
+        "nombre": "Mouse RGB",
+        "importe": 35,
+        "url": "https://http2.mlstatic.com/D_NQ_NP_715011-MLA45384661954_032021-O.webp"
+    },
+    {
+        "id": 6,
+        "nombre": "Iphone XR",
+        "importe": 600,
+        "url": "https://www.oneclickstore.com/do/wp-content/uploads/2020/09/dftyuio.png"
+    }
+]
