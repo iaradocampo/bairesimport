@@ -23,7 +23,6 @@ $.getJSON(URLJSON, function (respuesta, estado) {
     }
 });
 
-
 //se inicializa la variable dolar en 1 por si la api no esta respondiendo
 let precioDolarHoyCompra = 1;
 let precioDolarHoyVenta = 1;
@@ -45,18 +44,18 @@ $(function () {
         }
     });
 
-    $("#open").on("click",function () {
+    $("#open").on("click", function () {
         $(".model").css('transform', 'scale(1)');
         $(".model").animate({
                 left: '750px',
             },
-            "slow")
-
+            "slow");
     });
 
-    $("#close").on("click",function () {
+    $("#close").on("click", function () {
         $(".model").css('transform', 'scale(0)');
-
+        vaciarMensaje();
+        $("#codigo").val("");
     });
 
 });
@@ -75,46 +74,41 @@ const alerta = JSON.parse(alertaJSON);
 //var global para notificar al usuario la operación
 let salida = "";
 
-//se crea elemento div
-let contenedorSalida = $(".model");
-
 //se calculan las cuotas del producto por el codigo ingresado
 function calcularCuotas(productoFiltrado) {
     let cuotas = sessionStorage.getItem('cuotas').split(",");
     salida = "El importe sin IVA incluido simulado para " + productoFiltrado.nombre + ":<br>";
-    salida += "1 cuota sin interés: " + productoFiltrado.importe * precioDolarHoyCompra + "<br>";
+    salida += "1 Cuota sin interés: " + productoFiltrado.importe * precioDolarHoyCompra + "<br>";
     for (let index = 0; index < cuotas.length; index++) {
         salida += cuotas[index] + " Cuotas sin interes: " + ((productoFiltrado.importe * precioDolarHoyCompra) / cuotas[index]).toFixed(2) + "<br>";
     }
-    contenedorSalida.append(`<div class="p-salida"><p>${salida}</p></div>`);
+    $("#mensaje").html(salida);
 }
 
 //evento que acciona la funcionalidad del simulador
-$("form").on("submit",function (e) {
+$("form").on("submit", function (e) {
     e.preventDefault();
     let formulario = e.target
     codigoProductoCargado = parseInt(formulario.children[0].value);
+    vaciarMensaje();
     if (Number.isNaN(codigoProductoCargado)) {
-        contenedorSalida.append(`<div class="p-mensaje"><p>${alerta.mensaje}</p></div>`);
-        deshabilitarBotonCotizar();
+        $("#mensaje").text(alerta.mensaje);
         return;
     } else {
         validarCalcular();
     }
 });
-function deshabilitarBotonCotizar(){
-    $("#open").prop("disabled", true).addClass("disabled");
-}
-;
+
 //funcion para validar y calcular cuotas 
 function validarCalcular() {
     if (codigoProductoCargado < 7) {
         calcularCuotas(productos.find(e => e.id == codigoProductoCargado));
-        deshabilitarBotonCotizar();
-        
-        //se busca contenedor class texto-formulario
     } else {
-        contenedorSalida.append(`<div class="p-mensaje"><p>${alerta.mensaje}</p></div>`);
-        deshabilitarBotonCotizar();
+        vaciarMensaje();
+        $("#mensaje").text(alerta.mensaje);
     }
+}
+//se vacia texto que se muestra en modal
+function vaciarMensaje() {
+    $("#mensaje").text("");
 }

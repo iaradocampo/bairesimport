@@ -111,12 +111,6 @@ ul li {
     display: none;
 }
 
-.reiniciar {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-}
-
 .input-boton {
     text-align: center;
     padding: 2rem 0 3rem 0;
@@ -134,14 +128,6 @@ ul li {
 
 .button:hover {
     background-color: rgb(110, 109, 109);
-}
-
-.disabled {
-    background-color: gray !important;
-}
-
-.disabled:hover {
-    background-color: gray;
 }
 
 .title {
@@ -198,6 +184,10 @@ ul li {
     position: relative;
 }
 
+#mensaje {
+    padding-top: 1rem;
+}
+
 .p-nav {
     color: white;
     font-size: 1.2em;
@@ -208,14 +198,6 @@ ul li {
     color: black;
     font-size: 1.3em;
     line-height: 1;
-}
-
-.p-salida {
-    padding-top: 1rem;
-}
-
-.p-mensaje {
-    padding-top: 4rem;
 }
 
 .contenedor-product {
